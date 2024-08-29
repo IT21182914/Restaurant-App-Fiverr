@@ -5,42 +5,85 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-6 shadow-md">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Restaurant Order Management</h1>
-        <div className="block lg:hidden">
+    <header className="bg-gradient-to-r from-purple-600 to-blue-500 text-white shadow-md">
+      <div className="container mx-auto flex justify-between items-center p-6">
+        <h1 className="text-3xl font-bold tracking-wider">RestaurantApp</h1>
+        <div className="lg:hidden">
           <button
-            className="flex items-center px-3 py-2 border rounded text-white border-white hover:text-gray-300 hover:border-gray-300"
+            className="text-white focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
           >
             <svg
-              className="fill-current h-3 w-3"
-              viewBox="0 0 20 20"
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
             </svg>
           </button>
         </div>
-        <nav
-          className={`lg:flex lg:items-center lg:w-auto ${
-            isOpen ? "block" : "hidden"
-          }`}
-        >
+        <nav className="hidden lg:flex space-x-6">
           <Link
-            className="block mt-4 lg:inline-block lg:mt-0 mr-6 hover:text-gray-300"
+            className="hover:text-yellow-300 transition-colors duration-200 text-lg font-semibold"
             to="/"
           >
             Home
           </Link>
           <Link
-            className="block mt-4 lg:inline-block lg:mt-0 hover:text-gray-300"
+            className="hover:text-yellow-300 transition-colors duration-200 text-lg font-semibold"
             to="/orders"
           >
             Orders
           </Link>
         </nav>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`fixed inset-0 bg-gradient-to-r from-blue-600 to-purple-600 bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-6 transform ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 lg:hidden`}
+      >
+        <button
+          className="absolute top-6 right-6 text-white focus:outline-none"
+          onClick={() => setIsOpen(false)}
+        >
+          <svg
+            className="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+        <Link
+          className="text-white text-2xl font-bold hover:text-yellow-300 transition-colors duration-200"
+          onClick={() => setIsOpen(false)}
+          to="/"
+        >
+          Home
+        </Link>
+        <Link
+          className="text-white text-2xl font-bold hover:text-yellow-300 transition-colors duration-200"
+          onClick={() => setIsOpen(false)}
+          to="/orders"
+        >
+          Orders
+        </Link>
       </div>
     </header>
   );
