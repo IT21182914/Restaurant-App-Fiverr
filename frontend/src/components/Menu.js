@@ -13,7 +13,12 @@ const Menu = () => {
 
   return (
     <div className="container mx-auto py-8">
-      <h2 className="text-2xl font-semibold mb-6 text-center">Menu</h2>
+      <div className="flex justify-center mb-8">
+        <h2 className="text-4xl font-extrabold text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-pulse shadow-lg rounded-lg px-4 py-2">
+          Menu
+        </h2>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {menuItems.map((item) => (
           <div
