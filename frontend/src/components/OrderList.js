@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { FaUtensils, FaListAlt } from "react-icons/fa";
+import { FaUtensils, FaCheckCircle } from "react-icons/fa"; // Importing FaCheckCircle for the button
 
 const OrderList = () => {
   const [orders, setOrders] = useState([]);
@@ -51,10 +51,11 @@ const OrderList = () => {
                 <FaUtensils className="text-green-500 w-6 h-6" />
               ) : (
                 <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 shadow-lg transition-all transform hover:scale-105"
+                  className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 shadow-md hover:shadow-xl transition-all transform hover:scale-105"
                   onClick={() => markAsCompleted(order._id)}
                 >
-                  Mark as Completed
+                  <FaCheckCircle className="w-4 h-4" />
+                  <span>Mark as Completed</span>
                 </button>
               )}
             </div>
