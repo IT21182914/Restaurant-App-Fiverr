@@ -5,9 +5,11 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-gradient-to-r from-purple-600 to-blue-500 text-white shadow-md">
+    <header className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white shadow-lg">
       <div className="container mx-auto flex justify-between items-center p-6">
-        <h1 className="text-3xl font-bold tracking-wider">RestaurantApp</h1>
+        <h1 className="text-3xl font-extrabold tracking-wide">
+          Restaurant<span className="text-yellow-300">App</span>
+        </h1>
         <div className="lg:hidden">
           <button
             className="text-white focus:outline-none"
@@ -29,18 +31,30 @@ const Header = () => {
             </svg>
           </button>
         </div>
-        <nav className="hidden lg:flex space-x-6">
+        <nav className="hidden lg:flex space-x-8">
           <Link
-            className="hover:text-yellow-300 transition-colors duration-200 text-lg font-semibold"
+            className="hover:text-yellow-300 transition-colors duration-300 text-lg font-semibold"
             to="/"
           >
             Home
           </Link>
           <Link
-            className="hover:text-yellow-300 transition-colors duration-200 text-lg font-semibold"
+            className="hover:text-yellow-300 transition-colors duration-300 text-lg font-semibold"
             to="/orders"
           >
             Orders
+          </Link>
+          <Link
+            className="hover:text-yellow-300 transition-colors duration-300 text-lg font-semibold"
+            to="/contact"
+          >
+            Contact
+          </Link>
+          <Link
+            className="hover:text-yellow-300 transition-colors duration-300 text-lg font-semibold"
+            to="/about"
+          >
+            About Us
           </Link>
         </nav>
       </div>
@@ -71,18 +85,32 @@ const Header = () => {
           </svg>
         </button>
         <Link
-          className="text-white text-2xl font-bold hover:text-yellow-300 transition-colors duration-200"
+          className="text-white text-2xl font-bold hover:text-yellow-300 transition-colors duration-300"
           onClick={() => setIsOpen(false)}
           to="/"
         >
           Home
         </Link>
         <Link
-          className="text-white text-2xl font-bold hover:text-yellow-300 transition-colors duration-200"
+          className="text-white text-2xl font-bold hover:text-yellow-300 transition-colors duration-300"
           onClick={() => setIsOpen(false)}
           to="/orders"
         >
           Orders
+        </Link>
+        <Link
+          className="text-white text-2xl font-bold hover:text-yellow-300 transition-colors duration-300"
+          onClick={() => setIsOpen(false)}
+          to="/contact"
+        >
+          Contact
+        </Link>
+        <Link
+          className="text-white text-2xl font-bold hover:text-yellow-300 transition-colors duration-300"
+          onClick={() => setIsOpen(false)}
+          to="/about"
+        >
+          About Us
         </Link>
       </div>
     </header>
