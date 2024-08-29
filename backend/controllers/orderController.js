@@ -6,10 +6,17 @@ exports.createOrder = async (req, res) => {
   const { items, tableNumber, specialInstructions } = req.body;
 
   try {
-    const totalAmount = items.reduce(
-      (acc, item) => acc + item.price * item.quantity,
-      0
-    );
+    console.log("Request body:", req.body);
+
+    // Fetch prices for each menuItem
+    let totalAmount = 0;
+    for (const item of items) {
+      const menuItem = await MenuItem.findById(item.menuItem);
+      if (!menuItem) {
+        return res.status(404).json({ message: "MenuItem not found" });
+      }
+      totalAmount += menuItem.price * item.quantity;
+    }
 
     const newOrder = new Order({
       items,
@@ -19,6 +26,7 @@ exports.createOrder = async (req, res) => {
     });
 
     const savedOrder = await newOrder.save();
+    console.log("Order saved:", savedOrder);
 
     // Update sales count for each ordered item
     for (const item of items) {
@@ -29,6 +37,7 @@ exports.createOrder = async (req, res) => {
 
     res.json(savedOrder);
   } catch (error) {
+    console.error("Error creating order:", error.message);
     res.status(500).json({ message: "Server Error" });
   }
 };
